@@ -1,0 +1,166 @@
+\documentclass[addpoints]{exam}
+\pagestyle{headandfoot}
+\usepackage{amsmath, amsfonts}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[utf8]{inputenc}
+\usepackage{parskip}
+\newcommand{\semester}{WS 2023/2024}
+\runningheader{\students}{Submission}{\semester}
+\runningfooter{}{\thepage}{}
+\headrule
+\footrule
+
+% ---------- Modify team name, students (matriculation number), exercise number here ----------
+\newcommand{\teamname}{dl2024-sigma\_learning}
+\newcommand{\students}{Uralp Ergin (5975013), İsmail Karabaş (7654321), Ahmet Yaşar Ayfer (5986167)}
+\newcommand{\assignmentnumber}{1}
+% ---------- End Modify ----------
+
+\title{Submission for Deep Learning Exercise \assignmentnumber}
+\author{Team: \teamname\\Students: \students}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% ---------- Add Solution below here ----------
+\section{Bertrand's Box Paradox Solution}
+
+\subsection{Question 1}
+Probabilities of drawing a black or white side
+
+Let's define our sample space and events:
+
+\begin{itemize}
+    \item $B$: Event of drawing a black side
+    \item $W$: Event of drawing a white side
+\end{itemize}
+
+There are 6 sides in total: 3 black and 3 white.
+
+\textbf{Probability of drawing a black side:} $P(B) = \boxed{\frac{1}{2}}$ 
+
+\textbf{Probability of drawing a white side:} $P(W) = \boxed{\frac{1}{2}}$
+
+
+We can also calculate the probability by considering each card type:
+
+\begin{itemize}
+    \item Black-Black card: $P(B) = \frac{1}{3} \cdot 1 = \frac{1}{3}$
+    \item White-White card: $P(B) = \frac{1}{3} \cdot 0 = 0$
+    \item Black-White card: $P(B) = \frac{1}{3} \cdot \frac{1}{2} = \frac{1}{6}$
+\end{itemize}
+
+Total probability: $P(B) = \frac{1}{3} + 0 + \frac{1}{6} = \frac{1}{2}$
+
+This confirms our initial result: $P(B) = P(W) = \frac{1}{2}$
+
+\subsection{Question 2}
+Probability that the other side is black, given that we see a black side
+
+Let's define the events:
+
+\begin{itemize}
+    \item $B_1$: Event of seeing a black side
+    \item $B_2$: Event that the other side is also black
+\end{itemize}
+
+We need to calculate $P(B_2|B_1)$
+
+Using Bayes' theorem:
+
+\[P(B_2|B_1) = \frac{P(B_1|B_2)P(B_2)}{P(B_1)}\]
+
+\begin{itemize}
+    \item $P(B_1|B_2) = 1$ (if both sides are black, we'll definitely see a black side)
+    \item $P(B_2) = \frac{1}{3}$ (probability of choosing the all-black card)
+    \item $P(B_1) = \frac{1}{2}$ (from question 1)
+\end{itemize}
+ \[P(B_2|B_1) = \frac{1 \cdot \frac{1}{3}}{\frac{1}{2}} = \boxed{ \frac{2}{3} }\]
+
+We can also calculate this probability by considering each possible black side:
+
+Let's label the sides of the cards as follows:
+\begin{itemize}
+    \item B1-B2 (all-black card)
+    \item B3-W1 (mixed card)
+    \item W2-W3 (all-white card)
+\end{itemize}
+
+When we choose a black side, there are three equally likely possibilities:
+\begin{itemize}
+    \item B1: P(other side black | B1) = 1
+    \item B2: P(other side black | B2) = 1
+    \item B3: P(other side black | B3) = 0
+\end{itemize}
+
+The total probability is thus:
+
+\[ P(\text{other side black} | \text{black side}) = \frac{1}{3} \cdot 1 + \frac{1}{3} \cdot 1 + \frac{1}{3} \cdot 0 = \frac{2}{3} \]
+
+This confirms our result from Bayes' theorem.
+
+
+
+\subsection{Question 3}
+Find the probability that the other side of the card is black if the card shows a white side.
+
+
+Let's define the events:
+\begin{itemize}
+    \item $W_1$: Event of seeing a white side
+    \item $B_2$: Event that the other side is black
+\end{itemize}
+
+We need to calculate $P(B_2|W_1)$
+
+Using Bayes' theorem:
+
+\[P(B_2|W_1) = \frac{P(W_1|B_2)P(B_2)}{P(W_1)}\]
+
+\begin{itemize}
+    \item $P(W_1|B_2) = 1$ (if one side is black and we see white, the other side must be black)
+    \item $P(B_2) = \frac{1}{6}$ (probability of choosing the black-white card and having the black side down)
+    \item $P(W_1) = \frac{1}{2}$ (from question 1)
+\end{itemize}
+
+Substituting:
+
+\[P(B_2|W_1) = \frac{1 \cdot \frac{1}{6}}{\frac{1}{2}} = \boxed{\frac{1}{3}} \]
+
+We can also calculate this probability by considering each possible black side:
+
+Let's label the sides of the cards as follows:
+\begin{itemize}
+    \item B1-B2 (all-black card)
+    \item B3-W1 (mixed card)
+    \item W2-W3 (all-white card)
+\end{itemize}
+
+When we choose a black side, there are three equally likely possibilities:
+\begin{itemize}
+    \item W1: P(other side black | W1) = 1
+    \item W2: P(other side black | W2) = 0
+    \item W3: P(other side black | W3) = 0
+\end{itemize}
+
+The total probability is thus:
+
+\[ P(\text{other side black} | \text{White side}) = \frac{1}{3} \cdot 1 + \frac{1}{3} \cdot 0 + \frac{1}{3} \cdot 0 = \frac{1}{3} \]
+
+This confirms our result from Bayes' theorem.
+
+\section{Question 7.2}
+
+Bayesian Linear Regression (BLR), How do the prior and posterior distributions differ? Why?
+
+Differences Between the Prior and the Posterior Distributions:
+
+Prior Distribution represents our initial estimations about the parameters before observing any data. It is defined by a mean ($\mu_\text{pre}$) and covariance ($\Sigma_\text{pre}$), often with large variance reflecting uncertainty.
+
+Posterior Distribution represents our updated estimations after observing data. The posterior mean ($\mu_\text{post}$) moves towards values that better fit the data, while the posterior covariance ($\Sigma_\text{post}$) becomes smaller, indicating reduced uncertainty.
+
+The key difference is the role of data. The prior reflects uncertainty before seeing data, while the posterior refines that estimation using observed data, reducing uncertainty and providing more accurate estimates. Bayesian inference updates our understanding by balancing prior knowledge with new information.
+\end{document}
